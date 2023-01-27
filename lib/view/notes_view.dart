@@ -17,7 +17,7 @@ class NotesView extends StatelessWidget {
               return const CustomBottomSheetWidget();
             },
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16)
+                  borderRadius: BorderRadius.circular(20)
               ),
             );
           },
