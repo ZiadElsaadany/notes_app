@@ -14,7 +14,7 @@ class CustomBottomSheetWidget extends StatelessWidget {
     // this widget to  prevent user's action on UI
     return   AbsorbPointer(
  absorbing: Provider.of<AddNoteProvider>(context).addLoading,
-        child: const AddNoteForm());
+        child: const SingleChildScrollView(child: AddNoteForm()));
 
   }
 }

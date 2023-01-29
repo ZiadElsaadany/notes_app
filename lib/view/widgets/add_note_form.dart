@@ -36,7 +36,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             autovalidateMode: autoValidateMode,
             child: Padding(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: ListView(
+              child: Column(
                 children:  [
                   Icon(
                     Icons.remove,
