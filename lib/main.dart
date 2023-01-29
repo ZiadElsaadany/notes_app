@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes_app/controller/add_note_provider.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/notes_view.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,9 @@ void main()  async {
 
   //name of box
   await Hive.openBox('notes_box');
+
+  // register note
+  Hive.registerAdapter(NoteModelAdapter());
 
   runApp(
       MultiProvider(
