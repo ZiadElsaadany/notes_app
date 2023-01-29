@@ -33,6 +33,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   provider:
+  modal_progress_hud_nsn: ^0.3.0
 
 
   # The following adds the Cupertino Icons font to your application.

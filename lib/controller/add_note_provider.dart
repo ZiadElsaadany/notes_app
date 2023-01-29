@@ -5,14 +5,16 @@ import 'package:notes_app/models/note_model.dart';
 class AddNoteProvider extends ChangeNotifier{
   bool addLoading = false;
 addNote (NoteModel note )  {
-addLoading = true;
-notifyListeners() ;
+  addLoading = true;
+  notifyListeners() ;
 try {
   var notesBox = Hive.box('notes_box');
   notesBox.add(note);
   addLoading= false;
 }catch(E) {
-  print (E);
+  addLoading= false;
+print(E);
+notifyListeners();
 }
 }
 
