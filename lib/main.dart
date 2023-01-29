@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:notes_app/controller/add_note_provider.dart';
 import 'package:notes_app/view/notes_view.dart';
+import 'package:provider/provider.dart';
 
 void main()  async {
 
@@ -11,7 +13,15 @@ void main()  async {
   //name of box
   await Hive.openBox('notes_box');
 
-  runApp(const NotesApp());
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context)=>AddNoteProvider(),
+          )
+        ],
+        child: const NotesApp(),
+      ));
 }
 
 class NotesApp extends StatelessWidget {
