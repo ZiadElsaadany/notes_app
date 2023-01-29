@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/controller/add_note_provider.dart';
+import 'package:notes_app/controller/read_notes_provider.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:provider/provider.dart';
 
@@ -74,6 +75,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                             NoteModel(title: title!, date: DateTime.now().toString(), description:description!, color: Colors.blue.value)
                         );
                         debugPrint('done');
+                        Provider.of<ReadNotesProvider>(context,listen: false).fetchAllNotes();
                         Navigator.pop(context);
                       }else{
                         autoValidateMode=AutovalidateMode.always;

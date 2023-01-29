@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes_app/controller/add_note_provider.dart';
+import 'package:notes_app/controller/read_notes_provider.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/notes_view.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,9 @@ void main()  async {
         providers: [
           ChangeNotifierProvider(
             create: (context)=>AddNoteProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context)=>ReadNotesProvider(),
           )
         ],
         child: const NotesApp(),
