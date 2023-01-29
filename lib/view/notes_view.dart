@@ -12,7 +12,10 @@ class NotesView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
 
           onPressed: ( ) {
-            showModalBottomSheet(context: context, builder:
+            showModalBottomSheet(
+
+              context: context,
+              builder:
             (context) {
               return const CustomBottomSheetWidget();
             },
