@@ -10,7 +10,11 @@ class CustomBottomSheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   const AddNoteForm();
+
+    // this widget to  prevent user's action on UI
+    return   AbsorbPointer(
+ absorbing: Provider.of<AddNoteProvider>(context).addLoading,
+        child: const AddNoteForm());
 
   }
 }

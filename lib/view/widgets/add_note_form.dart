@@ -29,61 +29,59 @@ class _AddNoteFormState extends State<AddNoteForm> {
   Widget build(BuildContext context) {
     return Consumer<AddNoteProvider>(
       builder: (context,provider,_) {
-        return ModalProgressHUD(
-          inAsyncCall: provider.addLoading,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Form(
-              key: formKey,
-              autovalidateMode: autoValidateMode,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: ListView(
-                  children:  [
-                    Icon(
-                      Icons.remove,
-                      color: Colors.grey[600],
-                    ),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    CustomTextField(
-                        onChanged: (value ) {
-                          title = value ;
-                        },
-                        hintText: 'Title'),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    CustomTextField
-                      (
-                      onChanged:  ( value) {
-                        description  =value ;
-                      } ,
-
-                      hintText: 'content',
-                      maxLines: 4,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomButton(
-                      onTap: (){
-                        if(formKey.currentState!.validate()){
-                          formKey.currentState!.save();
-                        provider.addNote(
-                              NoteModel(title: title!, date: DateTime.now().toString(), description:description!, color: Colors.blue.value)
-                          );
-                          debugPrint('done');
-                          Navigator.pop(context);
-                        }else{
-                          autoValidateMode=AutovalidateMode.always;
-                          setState(() {});
-                        }
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Form(
+            key: formKey,
+            autovalidateMode: autoValidateMode,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: ListView(
+                children:  [
+                  Icon(
+                    Icons.remove,
+                    color: Colors.grey[600],
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  CustomTextField(
+                      onChanged: (value ) {
+                        title = value ;
                       },
-                    ),
-                  ],
-                ),
+                      hintText: 'Title'),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  CustomTextField
+                    (
+                    onChanged:  ( value) {
+                      description  =value ;
+                    } ,
+
+                    hintText: 'content',
+                    maxLines: 4,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomButton(
+                    isLoading: provider.addLoading,
+                    onTap: (){
+                      if(formKey.currentState!.validate()){
+                        formKey.currentState!.save();
+                      provider.addNote(
+                            NoteModel(title: title!, date: DateTime.now().toString(), description:description!, color: Colors.blue.value)
+                        );
+                        debugPrint('done');
+                        Navigator.pop(context);
+                      }else{
+                        autoValidateMode=AutovalidateMode.always;
+                        setState(() {});
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
           ),
