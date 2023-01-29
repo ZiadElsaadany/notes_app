@@ -12,10 +12,11 @@ void main()  async {
   await Hive.initFlutter();
 
   //name of box
-  await Hive.openBox('notes_box');
-
   // register note
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<NoteModel>('notes_box');
+
+
 
   runApp(
       MultiProvider(

@@ -10,15 +10,7 @@ class CustomBottomSheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Consumer<AddNoteProvider>(
-        builder: (context,provider,_) {
-          return ModalProgressHUD(
-              inAsyncCall: provider.addLoading,
-              child: const AddNoteForm());
-        }
-      ),
-    );
+    return   const AddNoteForm();
+
   }
 }
