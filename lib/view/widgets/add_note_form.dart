@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/controller/add_note_provider.dart';
 import 'package:notes_app/controller/read_notes_provider.dart';
@@ -72,7 +73,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       if(formKey.currentState!.validate()){
                         formKey.currentState!.save();
                       provider.addNote(
-                            NoteModel(title: title!, date: DateTime.now().toString(), description:description!, color: Colors.blue.value)
+                            NoteModel(
+                                title: title!,
+                                date: DateFormat.yMd().format(DateTime.now()),
+                                description:description!,
+                                color: Colors.blue.value
+                            )
                         );
                         debugPrint('done');
                         Provider.of<ReadNotesProvider>(context,listen: false).fetchAllNotes();
