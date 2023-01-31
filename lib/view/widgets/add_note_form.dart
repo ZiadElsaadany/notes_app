@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/controller/add_note_provider.dart';
 import 'package:notes_app/controller/read_notes_provider.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:provider/provider.dart';
 
+import 'colors_list_view.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -45,7 +45,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     color: Colors.grey[600],
                   ),
                   const SizedBox(
-                    height: 32,
+                    height: 10,
                   ),
                   CustomTextField(
                       onChanged: (value ) {
@@ -67,6 +67,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   const SizedBox(
                     height: 20,
                   ),
+                  const SizedBox(
+                    height: 35 * 2,
+                    child:ColorsListView()
+                  ),
+                 const  SizedBox(height: 10,),
                   CustomButton(
                     isLoading: provider.addLoading,
                     onTap: (){
@@ -89,6 +94,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       }
                     },
                   ),
+                  const SizedBox(height: 10,),
                 ],
               ),
             ),
@@ -98,3 +104,5 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
+
+

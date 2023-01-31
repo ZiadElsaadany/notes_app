@@ -10,7 +10,7 @@ final bool isLoading;
     return GestureDetector(
       onTap:onTap ,
       child: Container(
-        padding: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(4),
         alignment: Alignment.center,
       width: MediaQuery.of(context).size.width*0.9,
           decoration: const BoxDecoration(
