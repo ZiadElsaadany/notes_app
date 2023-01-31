@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/view/widgets/add_note_bottom_sheet.dart';
 import 'package:notes_app/view/widgets/notes_view_body.dart';
 import 'package:provider/provider.dart';
-
 import '../controller/read_notes_provider.dart';
-
 class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
 
@@ -19,7 +17,10 @@ class _NotesViewState extends State<NotesView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<ReadNotesProvider>(context,listen: false).fetchAllNotes();
+    Future.delayed(Duration.zero, () {
+      Provider.of<ReadNotesProvider>(context,listen: false).fetchAllNotes();
+
+    });
   }
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,8 @@ class _NotesViewState extends State<NotesView> {
        body: const NotesViewBody(),
       floatingActionButton: FloatingActionButton(
 
-          onPressed: ( ) {
+        onPressed: ( ) {
             showModalBottomSheet(
-
               isScrollControlled: true,
               context: context,
               builder:

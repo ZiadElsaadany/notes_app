@@ -26,7 +26,7 @@ void main()  async {
           ),
           ChangeNotifierProvider(
             create: (context)=>ReadNotesProvider(),
-          )
+          ),
         ],
         child: const NotesApp(),
       ));

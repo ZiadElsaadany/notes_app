@@ -13,7 +13,11 @@ class NotesListView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Consumer<ReadNotesProvider>(
         builder: (context,provider,_) {
-          return ListView.builder(
+          return provider.allNotes ==[] ?  const Center(child: Text('No Notes',
+          style: TextStyle(
+            color: Colors.white
+          ),
+          )): ListView.builder(
             physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.zero,
             itemBuilder: ( context ,index) {
