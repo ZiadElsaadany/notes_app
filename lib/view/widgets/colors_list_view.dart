@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:notes_app/controller/add_note_provider.dart';
+import 'package:provider/provider.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({Key? key, required this.isActive, required this.color}) : super(key: key);
@@ -35,30 +37,38 @@ class ColorsListView extends StatefulWidget {
 class _ColorsListViewState extends State<ColorsListView> {
   // website --> color palette generator
   // to check colors
-  List<Color> colors =const [
-    Color(0xffE2CFEA),
-    Color(0xffA06CD5),
-    Color(0xff6247AA),
-    Color(0xff102B3F),
-    Color(0xffE2CFEA),
-    Color(0xffA06CD5),
-    Color(0xff6247AA),
+  List<Color> colors = [
+   const  Color(0xffe2cfea),
+    const Color(0xffA06CD5),
+    const Color(0xff6247AA),
+    Colors.blue,
+    Colors.red,
+    Colors.orange,
+    Colors.cyanAccent,
+    const Color(0xff102B3F),
+    const Color(0xffE2CFEA),
+    const Color(0xffA06CD5),
+    const Color(0xff6247AA)
+
   ] ;
+
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return  ListView.builder(
+      physics:const  BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       itemBuilder: (ctx,index)=>  GestureDetector(
           onTap: ( ) {
           currentIndex =index ;
+          Provider.of<AddNoteProvider>(context,listen: false).color = colors[index];
           setState(() {});
           },
           child: ColorItem(isActive: currentIndex==index?true:false ,
 
           color: colors[index],
           )),
-      itemCount: colors.length ,
+      itemCount:colors.length ,
 
     );
   }

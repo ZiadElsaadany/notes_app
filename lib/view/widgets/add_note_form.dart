@@ -82,11 +82,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
                                 title: title!,
                                 date: DateFormat.yMd().format(DateTime.now()),
                                 description:description!,
-                                color: Colors.blue.value
+                                color: Provider.of<AddNoteProvider>(context,listen: false).color?.value??
+
+                                  const Color(0xffE2CFEA).value,
                             )
                         );
                         debugPrint('done');
                         Provider.of<ReadNotesProvider>(context,listen: false).fetchAllNotes();
+
                         Navigator.pop(context);
                       }else{
                         autoValidateMode=AutovalidateMode.always;

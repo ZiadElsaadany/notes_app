@@ -34,7 +34,7 @@ class _NotesViewState extends State<NotesView> {
               context: context,
               builder:
             (context) {
-              return const CustomBottomSheetWidget();
+              return  const CustomBottomSheetWidget();
             },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)
@@ -45,6 +45,7 @@ class _NotesViewState extends State<NotesView> {
         child: const Icon(Icons.add),
 
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
