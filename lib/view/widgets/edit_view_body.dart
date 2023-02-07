@@ -52,9 +52,12 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 },
                 hintText: widget.note.description, maxLines: 5),
           const   SizedBox(height: 20,),
-            const SizedBox(
+             SizedBox(
                 height: 35 * 2,
-                child:EditNoteListView()
+                child:EditNoteListView(
+note: widget.note,
+
+                )
             ),
           ],
         ),
@@ -64,8 +67,8 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
 }
 
 class EditNoteListView extends StatefulWidget {
- const   EditNoteListView({Key? key}) : super(key: key);
-
+ const   EditNoteListView({Key? key, required this.note}) : super(key: key);
+final NoteModel note;
   @override
   State<EditNoteListView> createState() => _EditNoteListViewState();
 }
@@ -86,8 +89,16 @@ class _EditNoteListViewState extends State<EditNoteListView> {
 
   ] ;
 
-  int currentIndex = 0;
+ late int currentIndex ;
+@override
+  void initState() {
+    // TODO: implement initState
 
+  // to get index of color check note
+  currentIndex=colors.indexOf(Color(widget.note.color));
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return  ListView.builder(
@@ -97,6 +108,7 @@ class _EditNoteListViewState extends State<EditNoteListView> {
           onTap: ( ) {
             currentIndex =index ;
             Provider.of<AddNoteProvider>(context,listen: false).color = colors[index];
+            widget.note.color= colors[index].value;
             setState(() {});
           },
           child: ColorItem(isActive: currentIndex==index?true:false ,
