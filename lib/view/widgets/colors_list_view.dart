@@ -41,14 +41,16 @@ class _ColorsListViewState extends State<ColorsListView> {
    const  Color(0xffe2cfea),
     const Color(0xffA06CD5),
     const Color(0xff6247AA),
-    Colors.blue,
+
     Colors.red,
     Colors.orange,
     Colors.cyanAccent,
-    const Color(0xff102B3F),
+
     const Color(0xffE2CFEA),
     const Color(0xffA06CD5),
-    const Color(0xff6247AA)
+    const Color(0xff6247AA),
+    Colors.white70,
+    Colors.yellowAccent
 
   ] ;
 

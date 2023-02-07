@@ -16,7 +16,7 @@ class NotesListView extends StatelessWidget {
           return provider.allNotes ==[] || provider.allNotes.isEmpty?  const Center(child: Text('No Notes, Please add Note',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 24 ,
+            fontSize: 22 ,
           ),
           )): ListView.builder(
             physics: const BouncingScrollPhysics(),
