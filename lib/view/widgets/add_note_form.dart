@@ -87,8 +87,16 @@ class _AddNoteFormState extends State<AddNoteForm> {
                                   const Color(0xffE2CFEA).value,
                             )
                         );
-                        debugPrint('done');
                         Provider.of<ReadNotesProvider>(context,listen: false).fetchAllNotes();
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('note added successfully',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                          ),
+                        ));
 
                         Navigator.pop(context);
                       }else{

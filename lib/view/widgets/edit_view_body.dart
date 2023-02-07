@@ -34,6 +34,15 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                   // edit note
                   widget.note.save();
                     Provider.of<ReadNotesProvider>(context,listen: false).fetchAllNotes();
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('note edited successfully',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ));
                   Navigator.pop(context);
                 },
                 title: 'Edit',
